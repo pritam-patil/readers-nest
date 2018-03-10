@@ -1,4 +1,5 @@
-Popular reddit articles 
+## Popular reddit articles <br/>
 
-Changelog:
-v0.1 initial view with default tags
+### Changelog: <br/>
+- v0.1 initial view with default tags <br/>
+- v0.2 added styles, blankshield clicks, spinner, logo, csp, tag updates, footer <br/>
