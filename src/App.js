@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import FastClick from 'fastclick';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  componentWillMount () {
+      FastClick.attach(document.body);
+  }
   render() {
     return (
       <div className="App">

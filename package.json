@@ -6,6 +6,7 @@
     "babel-polyfill": "^6.26.0",
     "blankshield": "^0.6.2",
     "cross-fetch": "^1.1.1",
+    "fastclick": "^1.0.6",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

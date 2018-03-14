@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CircleLoader from '../components/core/circle-loader';
+import SiteIcon from '../components/core/ring-loader';
 import {
   selectSubreddit,
   fetchPostsIfNeeded,
@@ -48,6 +49,7 @@ class AsyncApp extends Component {
     return (
       <div class="App">
         <div className="App-header">
+            <SiteIcon />
             <h2> Read trending articles!</h2>
         </div>
         <Picker
