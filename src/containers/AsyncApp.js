@@ -57,7 +57,7 @@ class AsyncApp extends Component {
           isFetching={isFetching}
           refreshClick={this.handleRefreshClick}
           onChange={this.handleChange}
-          options={['google', 'cool', 'daily', 'internet', 'reactjs', 'frontend', 'python', 'facebook', 'fullstack']}
+          options={['google', 'daily', 'internet', 'television', 'Food', 'Science', 'reactjs', 'frontend', 'python', 'facebook', 'fullstack']}
           lastUpdated={lastUpdated}
         />
         {isFetching && (

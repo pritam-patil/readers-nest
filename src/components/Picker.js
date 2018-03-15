@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './posts.css';
+import './picker.css';
 
 export default class Picker extends Component {
   render() {

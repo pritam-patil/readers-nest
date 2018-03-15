@@ -1,0 +1,13 @@
+.input-component {
+    border: solid 2px LightGrey;
+    background-color: white;
+    width: 100%;
+}
+
+.last-update {
+    right: -50px;
+}
+
+.refresh-click {
+    color: blue;
+}
