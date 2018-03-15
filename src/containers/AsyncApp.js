@@ -47,7 +47,7 @@ class AsyncApp extends Component {
   render() {
     const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
     return (
-      <div class="App">
+      <div className="App">
         <div className="App-header">
             <SiteIcon />
             <h2> Read trending articles!</h2>

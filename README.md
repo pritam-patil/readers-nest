@@ -6,3 +6,4 @@
 - v0.3 correct header style, add cursor pointer, input style correction
 - v0.4 RignLoaders as Home Icon, Fastclick, favicon update
 - v0.5 Separate css for Picker, post loader position at center, new tags (science, tv, food)
+- v0.6 meta tags for SEO, clean-up

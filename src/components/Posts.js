@@ -29,7 +29,7 @@ PostItem.propProps = {
 	num_comments: PropTypes.string,
 	ups: PropTypes.string,
 	onClick: PropTypes.func.isRequired
-}
+};
 
 export default class Posts extends Component {
 
@@ -41,7 +41,7 @@ export default class Posts extends Component {
 	}
 
 	return `${selftext.slice(0, 100)} ...`;
-  }
+  };
 
   orderPosts = posts =>
 	   posts.sort((a, b) => {
@@ -77,4 +77,4 @@ export default class Posts extends Component {
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired
-}
+};
