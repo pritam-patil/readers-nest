@@ -11,8 +11,13 @@ const Activity = ({ ups, num_comments }) => (
   <table className="activity-body">
     <tbody>
       <tr>
-        <td> {ups}&#8679; </td>
-        <td> {num_comments} replies </td>
+        <td>
+        <img style={{width: '10px'}} src="https://png.icons8.com/metro/50/000000/thumb-up.png"/>
+         { `  ${ups}  `}  </td>
+        <td>
+          <img style={{width: '10px'}} src="https://png.icons8.com/metro/50/000000/quote.png"/>
+          { `  ${num_comments}  `}
+         </td>
       </tr>
     </tbody>
   </table>

@@ -4,7 +4,7 @@ import './spinner.css';
 
 const Loader = () => (
   <div className="icon-spinner">
-    <RingLoader color="#FFA500" loading />
+    <RingLoader color="#8E44AD" loading />
   </div>
 );
 

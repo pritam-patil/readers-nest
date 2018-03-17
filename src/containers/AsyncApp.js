@@ -48,6 +48,7 @@ class AsyncApp extends Component {
       <div className="App">
         <div className="App-header">
           <SiteIcon />
+          <img className="site-icon" src="http://readers-digest.surge.sh/icons/favicon.ico" />
           <h2> Read trending articles!</h2>
         </div>
         <Picker
