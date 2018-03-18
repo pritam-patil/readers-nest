@@ -1,0 +1,20 @@
+.input-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: white;
+  height: 56px;
+  border-bottom: 1px solid #00000038;
+}
+
+.btn-refresh {
+  background-color: #ffffff;
+  border: none;
+  color: #0000ff;
+}
+
+.img-refresh {
+  width: 24px;
+  height: 24px;
+}

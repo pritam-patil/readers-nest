@@ -1,0 +1,41 @@
+.container {
+  background-color: #e8e8e8;
+  padding: 8px;
+}
+
+.post {
+  padding: 0.1rem 0.1rem 0.1rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px #0000001f;
+  min-height: 2rem;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+}
+
+.post-title {
+  margin: 10px;
+  font-family: fantasy;
+  font-size: 1.2rem;
+  color: blue;
+  cursor: pointer;
+}
+
+.post-desc {
+  margin: 10px;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  color: black;
+  overflow: hidden;
+}
+
+.activity-body {
+  border-spacing: 11px;
+  font-size: 0.9rem;
+  color: black;
+  background-color: white;
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+}

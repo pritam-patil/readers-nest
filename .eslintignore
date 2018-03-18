@@ -1,2 +1,5 @@
 # Ignore .json files
 *.json
+
+# Ignore .css files
+*.css

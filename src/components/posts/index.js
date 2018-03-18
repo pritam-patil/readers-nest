@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import { unescape } from 'lodash';
 import PropTypes from 'prop-types';
 import blankshield from 'blankshield';
-import './posts.css';
+import './styles.css';
 
 // TODO: Make prop validations, eslint (though disabled for now) is giving error
-// TODO: Make num_comments camelCase
+
 /* eslint-disable */
-const Activity = ({ ups, num_comments }) => (
+const Activity = ({ ups, numComments }) => (
   <table className="activity-body">
     <tbody>
       <tr>
         <td>
-        <img style={{width: '10px'}} src="https://png.icons8.com/metro/50/000000/thumb-up.png"/>
-         { `  ${ups}  `}  </td>
+          <img className="img" src="https://png.icons8.com/dusk/50/000000/facebook-like.png" />
+          <span>{`${ups}`}</span>
+        </td>
         <td>
-          <img style={{width: '10px'}} src="https://png.icons8.com/metro/50/000000/quote.png"/>
-          { `  ${num_comments}  `}
-         </td>
+          <img className="img" src="https://png.icons8.com/dusk/50/000000/quote.png" />
+          <span> {`${numComments}`}</span>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -25,24 +26,24 @@ const Activity = ({ ups, num_comments }) => (
 
 Activity.propTypes = {
   ups: PropTypes.number.isRequired,
-  num_comments: PropTypes.number.isRequired,
+  numComments: PropTypes.number.isRequired,
 };
 
-const PostItem = ({ title, desc, ups, num_comments, url, clickHandler }) => (
+const PostItem = ({ title, desc, ups, numComments, url, clickHandler }) => (
   <div className="post">
     <p className="post-title" onClick={() => clickHandler(url)}>
       {' '}
       {unescape(title)}{' '}
     </p>
     {desc && <p className="post-desc"> {desc} </p>}
-    <Activity num_comments={num_comments} ups={ups} />
+    <Activity numComments={numComments} ups={ups} />
   </div>
 );
 
 PostItem.propProps = {
   title: PropTypes.string,
   desc: PropTypes.string,
-  num_comments: PropTypes.string,
+  numComments: PropTypes.string,
   ups: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
@@ -74,13 +75,15 @@ export default class Posts extends Component {
     const orderedPosts = this.orderPosts(posts);
 
     return (
-      <div>
-        {orderedPosts.map(post => (
+      <div className="container">
+        {orderedPosts.map((post, index) => (
           <PostItem
+            // eslint-disable-next-line
+            key={index}
             title={post.title}
             desc={this.getDescription(post.selftext)}
             ups={post.ups}
-            num_comments={post.num_comments}
+            numComments={post.num_comments}
             url={post.url}
             clickHandler={this.handleClick}
           />

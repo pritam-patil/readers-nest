@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import CircleLoader from '../components/core/circle-loader';
 import SiteIcon from '../components/core/ring-loader';
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
-import Picker from '../components/Picker';
-import Posts from '../components/Posts';
+import Picker from '../components/picker';
+import Posts from '../components/posts';
 import '../App.css';
 
 class AsyncApp extends Component {
@@ -48,8 +48,12 @@ class AsyncApp extends Component {
       <div className="App">
         <div className="App-header">
           <SiteIcon />
-          <img className="site-icon" src="http://readers-digest.surge.sh/icons/favicon.ico" />
-          <h2> Read trending articles!</h2>
+          <img
+            className="site-icon"
+            src="http://readers-digest.surge.sh/icons/favicon.ico"
+            alt="site-icon"
+          />
+          <h2>Read trending articles!</h2>
         </div>
         <Picker
           value={selectedSubreddit}
@@ -80,9 +84,16 @@ class AsyncApp extends Component {
                 <Posts posts={posts} />
               </div>
               <p align="center">
-                {' '}
-                The information shown here is provided by{' '}
-                <code> https://www.reddit.com/r/ API </code>{' '}
+                The information shown here is provided by
+                <code> https://www.reddit.com/r/ API </code>
+                <img
+                  alt="reddit icon"
+                  src="https://png.icons8.com/doodle/50/000000/reddit.png"
+                  style={{ width: '24px', height: '24px' }}
+                />
+              </p>
+              <p align="center" style={{ margin: '0px' }}>
+                Icons are provided by <a href="https://icons8.com">Icon pack by Icons8</a>
               </p>
             </div>
           )}
