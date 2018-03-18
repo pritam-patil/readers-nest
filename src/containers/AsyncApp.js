@@ -61,17 +61,29 @@ class AsyncApp extends Component {
           refreshClick={this.handleRefreshClick}
           onChange={this.handleChange}
           options={[
-            'google',
-            'daily',
-            'internet',
-            'television',
+            'Humor',
+            'Internet',
+            'Television',
+            'India News',
             'Food',
             'Science',
-            'reactjs',
-            'frontend',
-            'python',
-            'facebook',
-            'fullstack',
+            'Technology',
+            'History',
+            'Movies',
+            'Smartphones',
+            'Google',
+            'Facebook',
+            'Daily',
+            'World News',
+            'Altcoin',
+            'Computers',
+            'Programming',
+            'ReactJS',
+            'Frontend',
+            'Python',
+            'React Native',
+            'Fullstack',
+            'Self Improvement',
           ]}
           lastUpdated={lastUpdated}
         />
@@ -93,7 +105,7 @@ class AsyncApp extends Component {
                 />
               </p>
               <p align="center" style={{ margin: '0px' }}>
-                Icons are provided by <a href="https://icons8.com">Icon pack by Icons8</a>
+                Icons are provided by <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a>
               </p>
             </div>
           )}

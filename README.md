@@ -9,3 +9,4 @@
 - v0.6 meta tags for SEO, clean-up
 - v0.7 site-icon in header, site-color meta update, post font and color update, like and comments icon from cdn
 - v0.8 more styling for post tiles, spacing in likes and comments, right placing for site-icon
+- v0.9 tag updates
