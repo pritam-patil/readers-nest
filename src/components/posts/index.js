@@ -13,11 +13,11 @@ const Activity = ({ ups, numComments }) => (
       <tr>
         <td>
           <img className="img" src="https://png.icons8.com/dusk/50/000000/facebook-like.png" />
-          <span>{`${ups}`}</span>
+          <span>{` ${ups} `}</span>
         </td>
         <td>
           <img className="img" src="https://png.icons8.com/dusk/50/000000/quote.png" />
-          <span> {`${numComments}`}</span>
+          <span> {` ${numComments} `}</span>
         </td>
       </tr>
     </tbody>
