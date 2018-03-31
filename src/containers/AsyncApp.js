@@ -61,6 +61,7 @@ class AsyncApp extends Component {
           refreshClick={this.handleRefreshClick}
           onChange={this.handleChange}
           options={[
+            'Google',
             'Humor',
             'Internet',
             'Television',
@@ -71,7 +72,6 @@ class AsyncApp extends Component {
             'History',
             'Movies',
             'Smartphones',
-            'Google',
             'Facebook',
             'Daily',
             'World News',
@@ -105,7 +105,10 @@ class AsyncApp extends Component {
                 />
               </p>
               <p align="center" style={{ margin: '0px' }}>
-                Icons are provided by <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a>
+                Icons are provided by{' '}
+                <a href="https://icons8.com" rel="noopener noreferrer" target="_blank">
+                  Icon pack by Icons8
+                </a>
               </p>
             </div>
           )}

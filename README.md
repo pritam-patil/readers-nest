@@ -13,3 +13,4 @@
 * v0.9 tag updates
 * v1.0 image display, full description, style updates
 * v1.1 youtube video display
+* v1.2 share icon, merged Activity component, Multiple Share options, fix youtube and youtu.be URLs.

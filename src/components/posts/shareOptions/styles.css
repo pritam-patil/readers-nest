@@ -1,0 +1,17 @@
+.box {
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.push {
+  margin-left: auto;
+  justify-content: space-between;
+}
+
+.space {
+  margin-left: 5px;
+}
+
+.right-align {
+  margin-right: 5px;
+}

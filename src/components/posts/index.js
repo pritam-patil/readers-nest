@@ -2,32 +2,8 @@ import React, { Component } from 'react';
 import { unescape } from 'lodash';
 import PropTypes from 'prop-types';
 import blankshield from 'blankshield';
+import ShareOptions from './shareOptions/';
 import './styles.css';
-
-// TODO: Make prop validations, eslint (though disabled for now) is giving error
-
-/* eslint-disable */
-const Activity = ({ ups, numComments }) => (
-  <table className="activity-body">
-    <tbody>
-      <tr>
-        <td>
-          <img className="img" src="https://png.icons8.com/dusk/50/000000/facebook-like.png" />
-          <span>{` ${ups} `}</span>
-        </td>
-        <td>
-          <img className="img" src="https://png.icons8.com/dusk/50/000000/quote.png" />
-          <span> {` ${numComments} `}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-);
-
-Activity.propTypes = {
-  ups: PropTypes.number.isRequired,
-  numComments: PropTypes.number.isRequired,
-};
 
 const isImageUrl = url =>
   !!url && (url.includes('.jpeg') || url.includes('.png') || url.includes('.jpg'));
@@ -35,28 +11,46 @@ const isImageUrl = url =>
 const isVideoURL = url => !!url && (url.includes('youtube.com') || url.includes('youtu.be'));
 
 const getEmbedURL = url => {
-  const vid = url.split('v=');
-  return 'https://www.youtube.com/embed/' + vid[1];
+  if (!!url && url.includes('youtube.com')) {
+    const vid = url.split('v=');
+    return `https://www.youtube.com/embed/${vid[1]}`;
+  }
+
+  if (!!url && url.includes('youtu.be')) {
+    const vid = url.split('/');
+    const fid = vid[vid.length - 1].split('?')[0];
+    return `https://www.youtube.com/embed/${fid}`;
+  }
+  return url;
 };
 
 const PostItem = ({ title, desc, ups, numComments, url, clickHandler }) => (
-  <div className="post" onClick={() => clickHandler(url)}>
-    <p className="post-title"> {unescape(title)} </p>
-    {isImageUrl(url) && (
-      <img onClick={() => <Dialog url={url} />} className="post-image" src={url} alt={title} />
-    )}
+  <div className="post">
+    <p className="post-title" onClick={() => clickHandler(url)}>
+      {' '}
+      {unescape(title)}{' '}
+    </p>
+    {isImageUrl(url) && <img className="post-image" src={url} alt={title} />}
     {isVideoURL(url) && <iframe width="100%" height="100%" src={getEmbedURL(url)} />}
     {desc && <p className="post-desc"> {desc} </p>}
-    <Activity numComments={numComments} ups={ups} />
+    <ShareOptions
+      {...{
+        title,
+        url,
+        numComments,
+        ups,
+      }}
+    />
   </div>
 );
 
 PostItem.propProps = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   desc: PropTypes.string,
-  numComments: PropTypes.string,
-  ups: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  numComments: PropTypes.string.isRequired,
+  ups: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 /* eslint-enable */
@@ -70,6 +64,7 @@ export default class Posts extends Component {
     // return `${selftext.slice(0, 100)} ...`;
   };
 
+  // eslint-disable-next-line
   handleClick = url => blankshield.open(url, '_blank');
 
   orderPosts = posts =>

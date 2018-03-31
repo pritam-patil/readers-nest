@@ -14,6 +14,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-scripts": "0.9.5",
+    "react-share": "^2.1.0",
     "react-spinners": "^0.2.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
@@ -41,6 +42,6 @@
     "prettier": "prettier --write src/**/*.{js,jsx}"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "eslint --fix", "git add"]
+    "*.{js,json,css}": ["prettier --write", "git add"]
   }
 }
