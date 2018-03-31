@@ -28,9 +28,17 @@
   overflow: hidden;
 }
 
+.post-image {
+  width: 96%;
+  height: 96%;
+  margin-left: 8px;
+  border-radius: 10px;
+  border: 1px solid #0000001f;
+}
+
 .activity-body {
-  border-spacing: 11px;
-  font-size: 0.9rem;
+  border-spacing: 8px;
+  font-size: 0.8rem;
   color: black;
   background-color: white;
 }

@@ -29,12 +29,15 @@ Activity.propTypes = {
   numComments: PropTypes.number.isRequired,
 };
 
+const isImageUrl = url =>
+  !!url && (url.includes('.jpeg') || url.includes('.png') || url.includes('.jpg'));
+
 const PostItem = ({ title, desc, ups, numComments, url, clickHandler }) => (
-  <div className="post">
-    <p className="post-title" onClick={() => clickHandler(url)}>
-      {' '}
-      {unescape(title)}{' '}
-    </p>
+  <div className="post" onClick={() => clickHandler(url)}>
+    <p className="post-title"> {unescape(title)} </p>
+    {isImageUrl(url) && (
+      <img onClick={() => <Dialog url={url} />} className="post-image" src={url} alt={title} />
+    )}
     {desc && <p className="post-desc"> {desc} </p>}
     <Activity numComments={numComments} ups={ups} />
   </div>
@@ -55,7 +58,8 @@ export default class Posts extends Component {
     if (!selftext) {
       return false;
     }
-    return `${selftext.slice(0, 100)} ...`;
+    return selftext;
+    // return `${selftext.slice(0, 100)} ...`;
   };
 
   handleClick = url => blankshield.open(url, '_blank');
