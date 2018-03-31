@@ -12,3 +12,4 @@
 * v0.8 more styling for post tiles, spacing in likes and comments, right placing for site-icon
 * v0.9 tag updates
 * v1.0 image display, full description, style updates
+* v1.1 youtube video display

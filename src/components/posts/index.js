@@ -32,12 +32,20 @@ Activity.propTypes = {
 const isImageUrl = url =>
   !!url && (url.includes('.jpeg') || url.includes('.png') || url.includes('.jpg'));
 
+const isVideoURL = url => !!url && (url.includes('youtube.com') || url.includes('youtu.be'));
+
+const getEmbedURL = url => {
+  const vid = url.split('v=');
+  return 'https://www.youtube.com/embed/' + vid[1];
+};
+
 const PostItem = ({ title, desc, ups, numComments, url, clickHandler }) => (
   <div className="post" onClick={() => clickHandler(url)}>
     <p className="post-title"> {unescape(title)} </p>
     {isImageUrl(url) && (
       <img onClick={() => <Dialog url={url} />} className="post-image" src={url} alt={title} />
     )}
+    {isVideoURL(url) && <iframe width="100%" height="100%" src={getEmbedURL(url)} />}
     {desc && <p className="post-desc"> {desc} </p>}
     <Activity numComments={numComments} ups={ups} />
   </div>
