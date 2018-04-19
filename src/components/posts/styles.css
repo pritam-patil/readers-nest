@@ -1,31 +1,33 @@
 .container {
-  background-color: #e8e8e8;
-  padding: 8px;
+  background-color: lightslategrey;
+  padding: 4px;
+  margin-top: 124px;
 }
 
 .post {
   padding: 0.1rem 0.1rem 0.1rem;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0px 4px 4px #0000001f;
   min-height: 2rem;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   background-color: #ffffff;
 }
 
 .post-title {
   margin: 10px;
-  font-family: fantasy;
+  font-family: sans-serif;
   font-size: 1.2rem;
-  color: blue;
+  color: darkslateblue;
   cursor: pointer;
 }
 
 .post-desc {
   margin: 10px;
-  font-size: 0.7rem;
+  font-size: 16px;
   opacity: 0.7;
   color: black;
   overflow: hidden;
+  align-items: center;
 }
 
 .post-image {

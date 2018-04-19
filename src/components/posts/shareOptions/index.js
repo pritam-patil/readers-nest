@@ -34,26 +34,10 @@ class ShareOptions extends Component {
     return (
       <Fragment>
         <div className="box">
-          <div>
-            <img
-              className="img"
-              src="https://png.icons8.com/dusk/50/000000/facebook-like.png"
-              alt="likes"
-            />
-            <span className="space">{`${ups}`}</span>
-          </div>
-          <div className="space">
-            <img
-              className="img"
-              src="https://png.icons8.com/dusk/50/000000/quote.png"
-              alt="comments"
-            />
-            <span> {`${numComments}`}</span>
-          </div>
           {!isChecked && (
             <div className="push">
               <img
-                className="img right-align"
+                className="img"
                 onClick={this.onShareClick}
                 src="https://png.icons8.com/flat_round/50/000000/share.png"
                 alt="Share"
@@ -98,6 +82,22 @@ class ShareOptions extends Component {
               </div>
             </Fragment>
           )}
+          <div>
+            <img
+              className="img"
+              src="https://png.icons8.com/dusk/50/000000/facebook-like.png"
+              alt="likes"
+            />
+            <span className="space">{`${ups}`}</span>
+          </div>
+          <div className="space">
+            <img
+              className="img"
+              src="https://png.icons8.com/dusk/50/000000/quote.png"
+              alt="comments"
+            />
+            <span> {`${numComments}`}</span>
+          </div>
         </div>
       </Fragment>
     );

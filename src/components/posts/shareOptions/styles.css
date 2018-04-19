@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 .push {
-  margin-left: auto;
+  margin-left: 5px;
   justify-content: space-between;
 }
 
@@ -14,4 +14,8 @@
 
 .right-align {
   margin-right: 5px;
+}
+
+.left-align {
+  margin-left: 5px;
 }

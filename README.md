@@ -14,3 +14,4 @@
 * v1.0 image display, full description, style updates
 * v1.1 youtube video display
 * v1.2 share icon, merged Activity component, Multiple Share options, fix youtube and youtu.be URLs.
+* v2.0 fixed header and search input section, styling update (background color, post padding, sharing)
