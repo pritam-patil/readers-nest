@@ -36,7 +36,7 @@ function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(subreddit) {
-  const reddit = subreddit.replace(" ", '');
+  const reddit = subreddit.replace(' ', '');
   return dispatch => {
     dispatch(requestPosts(subreddit));
     return fetch(`https://www.reddit.com/r/${reddit}.json`)
