@@ -1,9 +1,12 @@
 .box {
   margin-left: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .push {
+  height: 40px;
+  width: 40px;
   margin-left: 5px;
   justify-content: space-between;
 }

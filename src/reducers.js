@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
-import { SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS } from './actions';
+import {
+  SELECT_SUBREDDIT,
+  INVALIDATE_SUBREDDIT,
+  REQUEST_POSTS,
+  RECEIVE_POSTS,
+  START_APP,
+} from './actions';
 
 function selectedSubreddit(state = 'Google', action) {
   switch (action.type) {
@@ -12,6 +18,7 @@ function selectedSubreddit(state = 'Google', action) {
 
 function posts(
   state = {
+    isLaunching: false,
     isFetching: false,
     didInvalidate: false,
     items: [],
@@ -30,6 +37,7 @@ function posts(
       });
     case RECEIVE_POSTS:
       return Object.assign({}, state, {
+        isLaunching: false,
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
@@ -43,10 +51,21 @@ function posts(
 function postsBySubreddit(state = {}, action) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
-    case RECEIVE_POSTS:
     case REQUEST_POSTS:
+    case RECEIVE_POSTS:
       return Object.assign({}, state, {
         [action.subreddit]: posts(state[action.subreddit], action),
+      });
+    default:
+      return state;
+  }
+}
+
+function startApp(state = { appStarted: false }, action) {
+  switch (action.type) {
+    case START_APP:
+      return Object.assign({}, state, {
+        appStarted: true,
       });
     default:
       return state;
@@ -56,6 +75,7 @@ function postsBySubreddit(state = {}, action) {
 const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
+  startApp,
 });
 
 export default rootReducer;

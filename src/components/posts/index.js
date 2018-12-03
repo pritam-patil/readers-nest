@@ -5,6 +5,7 @@ import blankshield from 'blankshield';
 import ShareOptions from './shareOptions/';
 import './styles.css';
 
+const NAVBAR_HEIGHT = 65;
 const isImageUrl = url =>
   !!url && (url.includes('.jpeg') || url.includes('.png') || url.includes('.jpg'));
 
@@ -24,25 +25,78 @@ const getEmbedURL = url => {
   return url;
 };
 
-const PostItem = ({ title, desc, ups, numComments, url, clickHandler }) => (
-  <div className="post">
-    <p className="post-title" onClick={() => clickHandler(url)}>
-      {' '}
-      {unescape(title)}{' '}
-    </p>
-    {isImageUrl(url) && <img className="post-image" src={url} alt={title} />}
-    {isVideoURL(url) && <iframe width="100%" height="100%" src={getEmbedURL(url)} />}
-    {desc && <p className="post-desc"> {desc} </p>}
-    <ShareOptions
-      {...{
-        title,
-        url,
-        numComments,
-        ups,
-      }}
-    />
-  </div>
-);
+const getSupportedImageSize = image_arr => {
+  const images = image_arr && image_arr.images && image_arr.images[0];
+  const resolutions = images.resolutions;
+  let width;
+  let deviceWidth, deviceHeight;
+
+  resolutions.map(data => {
+    width = data.width;
+
+    if (width === 320) {
+      deviceHeight =
+        data.height < 300 ? data.height + 2 * NAVBAR_HEIGHT : data.height - 2 * NAVBAR_HEIGHT;
+      deviceWidth = width;
+    }
+  });
+
+  return [deviceWidth, deviceHeight];
+};
+
+const ImageItem = props => {
+  const { alt, preview, source } = props;
+  const details = getSupportedImageSize(preview);
+  const [width, height] = details;
+  console.log(`>> function returned ${width} ${height} ${source}`);
+
+  return (
+    <img style={{ width: width, height: height }} className="image-view" src={source} alt={alt} />
+  );
+};
+
+export const PostItem = ({
+  thumbnail,
+  thumb_width,
+  thumb_height,
+  preview,
+  details,
+  title,
+  ups,
+  numComments,
+  url,
+  clickHandler,
+}) => {
+  if (isImageUrl(url)) {
+    console.log(`>> function returned ${url}`);
+  }
+
+  return (
+    <div className="post">
+      <p className="post-title" onClick={() => clickHandler(url)}>
+        {' '}
+        {unescape(title)}{' '}
+      </p>
+      {isImageUrl(url) && <ImageItem preview={preview} source={url} alt={title} />}
+      {false && isImageUrl(url) && <img className="image-view" src={url} alt={title} />}
+      {isVideoURL(url) && <iframe width="100%" height="100%" src={getEmbedURL(url)} />}
+      {details && <p className="post-desc"> {details} </p>}
+      {!details && !isImageUrl(url) && (
+        <img styles={{ height: thumb_height, width: thumb_width }} src={thumbnail} />
+      )}
+      {false && (
+        <ShareOptions
+          {...{
+            title,
+            url,
+            numComments,
+            ups,
+          }}
+        />
+      )}
+    </div>
+  );
+};
 
 PostItem.propProps = {
   title: PropTypes.string.isRequired,

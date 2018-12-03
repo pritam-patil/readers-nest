@@ -67,8 +67,8 @@
 @media only screen and (max-width: 500px) {
   .tab-spinner {
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 60%;
+    left: 45%;
     width: 5.4em;
     height: 5.4em;
     margin-top: -2.7em;

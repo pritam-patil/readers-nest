@@ -15,10 +15,11 @@ import {
 } from 'react-share';
 import './styles.css';
 
+const ICON_SIZE = 40;
 class ShareOptions extends Component {
   constructor(props) {
     super(props);
-    this.state = { isChecked: false };
+    this.state = { isChecked: true };
   }
 
   onShareClick = () => {
@@ -34,70 +35,38 @@ class ShareOptions extends Component {
     return (
       <Fragment>
         <div className="box">
-          {!isChecked && (
+          <Fragment>
             <div className="push">
-              <img
-                className="img"
-                onClick={this.onShareClick}
-                src="https://png.icons8.com/flat_round/50/000000/share.png"
-                alt="Share"
-              />
+              <WhatsappShareButton url={url} title={this.getSharePostFooter(title)} separator=" - ">
+                <WhatsappIcon size={ICON_SIZE} round />
+              </WhatsappShareButton>
             </div>
-          )}
-          {isChecked && (
-            <Fragment>
-              <div className="push">
-                <WhatsappShareButton
-                  url={url}
-                  title={this.getSharePostFooter(title)}
-                  separator=" - "
-                >
-                  <WhatsappIcon size={24} round />
-                </WhatsappShareButton>
-              </div>
-              <div>
-                <FacebookShareButton url={url} quote={this.getSharePostFooter(title)}>
-                  <FacebookIcon size={24} round />
-                </FacebookShareButton>
-              </div>
-              <div>
-                <TwitterShareButton url={url} via="http://readers-digest.surge.sh" title={title}>
-                  <TwitterIcon size={24} round />
-                </TwitterShareButton>
-              </div>
-              <div>
-                <LinkedinShareButton
-                  url={url}
-                  title={this.getSharePostFooter(title)}
-                  windowWidth={750}
-                  windowHeight={600}
-                >
-                  <LinkedinIcon size={24} round />
-                </LinkedinShareButton>
-              </div>
-              <div>
-                <EmailShareButton url={url} subject={title} body={this.getSharePostFooter(url)}>
-                  <EmailIcon size={24} round />
-                </EmailShareButton>
-              </div>
-            </Fragment>
-          )}
-          <div>
-            <img
-              className="img"
-              src="https://png.icons8.com/dusk/50/000000/facebook-like.png"
-              alt="likes"
-            />
-            <span className="space">{`${ups}`}</span>
-          </div>
-          <div className="space">
-            <img
-              className="img"
-              src="https://png.icons8.com/dusk/50/000000/quote.png"
-              alt="comments"
-            />
-            <span> {`${numComments}`}</span>
-          </div>
+            <div className="push">
+              <FacebookShareButton url={url} quote={this.getSharePostFooter(title)}>
+                <FacebookIcon size={ICON_SIZE} round />
+              </FacebookShareButton>
+            </div>
+            <div className="push">
+              <TwitterShareButton url={url} via="http://readers-digest.surge.sh" title={title}>
+                <TwitterIcon size={ICON_SIZE} round />
+              </TwitterShareButton>
+            </div>
+            <div className="push">
+              <LinkedinShareButton
+                url={url}
+                title={this.getSharePostFooter(title)}
+                windowWidth={750}
+                windowHeight={600}
+              >
+                <LinkedinIcon size={ICON_SIZE} round />
+              </LinkedinShareButton>
+            </div>
+            <div className="push">
+              <EmailShareButton url={url} subject={title} body={this.getSharePostFooter(url)}>
+                <EmailIcon size={ICON_SIZE} round />
+              </EmailShareButton>
+            </div>
+          </Fragment>
         </div>
       </Fragment>
     );

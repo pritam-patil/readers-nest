@@ -1,0 +1,121 @@
+.home-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.snackbar {
+  background: orangered;
+  color: #ffffff;
+  display: flex;
+  flex-basis: 25%;
+  flex-direction: row;
+  height: 44px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sb-left {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sb-left i {
+  margin: 8px;
+}
+
+.sb-right {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sb-right i {
+  margin: 8px;
+}
+
+.border {
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.center {
+  align-self: center;
+}
+
+.content {
+  flex: 0 0 50%;
+  color: #005500;
+}
+
+.navbar {
+  margin: 0px;
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  flex: 1;
+  align-items: baseline;
+}
+
+.navbar i {
+  padding: 0px 16px;
+}
+
+/* Standard syntax */
+@keyframes rollReddit {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(90deg);
+  }
+  40% {
+    transform: rotate(160deg);
+  }
+  60% {
+    transform: rotate(230deg);
+  }
+  80% {
+    transform: rotate(300deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#reddit {
+  background-color: lightgrey;
+  color: orangered;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  border-radius: 24px;
+  box-shadow: 0 8px 6px -6px black;
+  border-bottom: 1px groove lightgray;
+  width: 90px;
+}
+
+#reddit > i {
+  animation-name: rollReddit;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+#reddit:before,
+#reddit:after {
+  content: '';
+  width: 200%;
+  position: absolute;
+  top: 15%;
+  height: 1px;
+  background: lightgray;
+  transform: translateY(-15%);
+}
+#reddit:before {
+  right: 100%;
+}
+#reddit:after {
+  left: 100%;
+}
