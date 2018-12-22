@@ -2,12 +2,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
+import Modal from 'react-responsive-modal';
 import CircleLoader from '../components/core/circle-loader';
-import SiteIcon from '../components/core/ring-loader';
-import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit, startApp } from '../actions';
+import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
 import Picker from '../components/picker';
 import Posts, { PostItem } from '../components/posts';
-import { Navigator } from '../components/core/navigator';
+import Navigator from '../components/core/navigator';
+import ShareOptions from '../components/posts/shareOptions';
 import 'react-toastify/dist/ReactToastify.css';
 import '../App.css';
 
@@ -17,6 +18,7 @@ class AsyncApp extends Component {
     this.state = {
       postAt: 0,
       renderSplash: true,
+      isOpen: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
@@ -39,6 +41,16 @@ class AsyncApp extends Component {
     this.props.dispatch(selectSubreddit(nextSubreddit));
     this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
   }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({ isOpen: false });
+  };
 
   getNextPost = () => {
     this.setState((prevState, props) => ({ postAt: prevState.postAt + 1 }));
@@ -136,7 +148,8 @@ class AsyncApp extends Component {
     const online = window.navigator.onLine;
     // eslint-disable-next-line
     const { selected, selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
-    const { postAt: index, renderSplash } = this.state;
+    const { postAt: index, renderSplash, isOpen } = this.state;
+    console.log(`>> state of modal: ${isOpen}`);
     const sortedPosts = posts && posts.length && this.orderPosts(posts);
 
     if (!online) {
@@ -150,7 +163,7 @@ class AsyncApp extends Component {
     }
 
     // TODO: adding this causes picker value reset. disable for now.
-    if (renderSplash && !sortedPosts) {
+    if (false && renderSplash && !sortedPosts) {
       return (
         <div className="splashscreen">
           <i class="fab fa-connectdevelop fa-3x animate-icon" />
@@ -165,64 +178,37 @@ class AsyncApp extends Component {
     }
 
     return (
-      <div className="App">
-        {false && (
-          <div className="App-header">
-            <SiteIcon />
-            <img
-              className="site-icon"
-              src="http://readers-digest.surge.sh/icons/favicon.ico"
-              alt="site-icon"
-            />
-            <h2>Read trending articles!</h2>
-          </div>
-        )}
-        {false && (
-          <Picker
-            value={selectedSubreddit}
-            isFetching={isFetching}
-            refreshClick={this.handleRefreshClick}
-            onChange={this.handleChange}
-            options={[
-              'Google',
-              'Humor',
-              'Internet',
-              'Television',
-              'India News',
-              'Food',
-              'Science',
-              'Technology',
-              'History',
-              'Movies',
-              'Smartphones',
-              'Facebook',
-              'Daily',
-              'World News',
-              'Altcoin',
-              'Computers',
-              'Programming',
-              'ReactJS',
-              'Frontend',
-              'Python',
-              'React Native',
-              'Fullstack',
-              'Self Improvement',
-            ]}
-            lastUpdated={lastUpdated}
-          />
-        )}
-        {false && isFetching && <CircleLoader color="#123abc" loading={isFetching} />}
+      <div className="web-container">
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
+        {!isFetching && (
+          <Modal
+            classNames={{ modal: 'modal-custom' }}
+            open={this.state.isOpen}
+            onClose={this.onCloseModal}
+            showCloseIcon={true}
+            little
+          >
+            <ShareOptions
+              title={sortedPosts[index].title}
+              url={sortedPosts[index].url}
+              ups={sortedPosts[index].ups}
+              numComments={sortedPosts[index].num_comments}
+              onSharedClick={this.onCloseModal}
+            />
+          </Modal>
+        )}
         {
           <Navigator
             picker={this.getCategoryPicker({ selected, selectedSubreddit, isFetching })}
             likes={(posts[index] && posts[index].ups) || 0}
             onClick={this.getNextPost}
+            onDislike={this.getNextPost}
             onPrevious={this.getLastPost}
             title={sortedPosts && sortedPosts[index].title}
             url={sortedPosts && sortedPosts[index].url}
             numComments={sortedPosts && sortedPosts[index].num_comments}
             ups={sortedPosts && sortedPosts[index].ups}
+            onShareClick={this.toggleModal}
           >
             {isFetching ? (
               <CircleLoader color="#123abc" loading={isFetching} />
@@ -240,6 +226,8 @@ class AsyncApp extends Component {
                   thumbnail={sortedPosts[index].thumbnail}
                   thumb_width={sortedPosts[index].thumbnail_width}
                   thumb_height={sortedPosts[index].thumbnail_height}
+                  author={sortedPosts[index].author}
+                  created={sortedPosts[index].created}
                 />
                 <ToastContainer
                   position="bottom-center"
@@ -258,28 +246,6 @@ class AsyncApp extends Component {
             )}
           </Navigator>
         }
-        {false && posts.length > 0 && (
-          <div>
-            <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-              <Posts posts={posts} />
-            </div>
-            <p align="center">
-              The information shown here is provided by
-              <code> https://www.reddit.com/r/ API </code>
-              <img
-                alt="reddit icon"
-                src="https://png.icons8.com/doodle/50/000000/reddit.png"
-                style={{ width: '24px', height: '24px' }}
-              />
-            </p>
-            <p align="center" style={{ margin: '0px' }}>
-              Icons are provided by{' '}
-              <a href="https://icons8.com" rel="noopener noreferrer" target="_blank">
-                Icon pack by Icons8
-              </a>
-            </p>
-          </div>
-        )}
       </div>
     );
   }
