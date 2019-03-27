@@ -11,6 +11,16 @@ const Picker = props => {
   return (
     <div className="input-component">
       <Select onChange={onChange} options={options} />
+    </div>
+  );
+};
+
+const Picker1 = props => {
+  const { value, isFetching, refreshClick, onChange, options, lastUpdated } = props;
+
+  return (
+    <div className="input-component">
+      <Select onChange={onChange} options={options} />
       {lastUpdated && <p>{`Last updated at ${new Date(lastUpdated).toLocaleTimeString()}`}</p>}
       {
         <button className="btn-refresh" type="button" onClick={e => refreshClick(e)}>

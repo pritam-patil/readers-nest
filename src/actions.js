@@ -1,9 +1,16 @@
 import fetch from 'cross-fetch';
 
+export const START_APP = 'START_APP';
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
+
+export function startApp() {
+  return {
+    type: START_APP,
+  };
+}
 
 export function selectSubreddit(subreddit) {
   return {
@@ -36,7 +43,7 @@ function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(subreddit) {
-  const reddit = subreddit.replace(" ", '');
+  const reddit = subreddit.replace(' ', '');
   return dispatch => {
     dispatch(requestPosts(subreddit));
     return fetch(`https://www.reddit.com/r/${reddit}.json`)

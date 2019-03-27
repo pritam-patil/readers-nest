@@ -1,13 +1,16 @@
 .select {
-  background-color: #ffffff;
-  border-width: 1px;
+  background-color: orangered;
+  border: 0px solid white;
   border-radius: 4px;
   width: 110px;
   height: 32px;
   outline: none;
   font-weight: bold;
+  color: white;
 }
 
 .option {
   font-weight: bold;
+  background-color: white;
+  color: black;
 }

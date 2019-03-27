@@ -1,0 +1,167 @@
+.home-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.snackbarWrapper {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.snackbar {
+  margin: 8px;
+  border: 1px solid orangered;
+  border-radius: 4px;
+  background: orangered;
+  color: #ffffff;
+  display: flex;
+  flex-basis: 25%;
+  flex-direction: row;
+  height: 44px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(60deg, hsl(0, 0%, 90%) 10%, hsl(0, 0%, 90%) 20%);
+  background-repeat: no-repeat;
+  background-size: 100% 75%;
+  background-position: 0 88%;
+}
+
+.footerWrapper i {
+  cursor: pointer;
+}
+
+.main-content {
+  position: relative;
+  flex: 1 1 50%;
+  display: flex;
+  margin: 56px 0;
+}
+
+.modal-custom {
+  border-radius: 4px;
+}
+
+.sb-left {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sb-left i {
+  margin: 8px;
+}
+
+.sb-right {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sb-right i {
+  margin: 8px;
+}
+
+.border {
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.center {
+  align-self: center;
+}
+
+.content {
+  flex: 0 0 50%;
+  color: #005500;
+}
+
+.navbar {
+  left: 8px;
+  bottom: 8px;
+  flex: 1;
+  align-items: baseline;
+}
+
+.navbar i {
+  padding: 8px 16px;
+  background-color: hsl(0, 0%, 90%);
+  margin: auto;
+}
+
+/* Standard syntax */
+@keyframes rollReddit {
+  0% {
+    transform: rotate(20deg);
+  }
+
+  20% {
+    transform: rotate(90deg);
+  }
+
+  40% {
+    transform: rotate(160deg);
+  }
+
+  60% {
+    transform: rotate(230deg);
+  }
+
+  80% {
+    transform: rotate(300deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#reddit {
+  background-color: hsl(0, 0%, 90%);
+  color: orangered;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  border-radius: 12px;
+  box-shadow: 0 8px 6px -6px black;
+  border: 2px solid white;
+  width: 88px;
+  &:hover {
+    animation: rollReddit;
+  }
+}
+
+#reddit > i {
+  animation-name: rollReddit;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+#reddit:before,
+#reddit:after {
+  content: '';
+  width: 200%;
+  position: absolute;
+  top: 15%;
+  height: 1px;
+  background: lightgray;
+  transform: translateY(-15%);
+}
+
+#reddit:before {
+  right: 100%;
+}
+
+#reddit:after {
+  left: 100%;
+}
