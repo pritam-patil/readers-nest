@@ -2,3 +2,8 @@ body {
   margin: 0;
   background-color: #ffffff;
 }
+
+@font-face {
+  font-family: 'oswald';
+  src: url('/fonts/product-sans-regular.ttf') format('truetype');
+}

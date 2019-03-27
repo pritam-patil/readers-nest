@@ -1,22 +1,153 @@
-.App {
-  background-color: darkkhaki;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  z-index: 1;
-  background: #5dade2;
-  color: black;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  text-align: center;
-  position: fixed;
+html {
   width: 100%;
-  top: 0;
+  height: calc(100% - 40px);
+  background-color: #fff;
+}
+
+body > .root {
+  min-height: 99vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  height: 40px;
+  font-size: 20px;
+}
+
+content {
+  flex: 1 0 auto;
+}
+
+.modal-custom {
+  top: -440px;
+  animation: drop 1s ease-in forwards;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(450px);
+    opacity: 1;
+  }
+}
+
+.web-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+footer {
+  flex-shrink: 0;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+footer > i,
+footer > div {
+  flex: 0 1 60%;
+  align-self: center;
+  margin: 4px 12px;
+  padding: 8px 4px 0px;
+  max-width: 64px;
+}
+
+.off-msg {
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.splashscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100wh;
+  height: 100vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-icon {
+  color: orangered;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wait-msg {
+  font-weight: bold;
+  margin: 16px;
 }
 
 .site-icon {
