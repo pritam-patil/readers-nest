@@ -1,0 +1,103 @@
+body {
+	margin: 0px;
+}
+
+svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+	z-index: 1;
+}
+
+.container {
+	background-color: white;
+  display: inline-block;
+  width: 100%;
+	margin: 0px;
+}
+
+.intro {
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	list-style-type: none;
+	z-index: 2;
+	padding: 0;
+}
+
+.tiles {
+	list-style: none;
+	margin-top: -768px;	
+	padding: 0;
+	display: flex;
+	flex-flow: row nowrap;
+	z-index: 1;
+}
+
+.tiles li:nth-child(1) {
+	width: 33%;
+	height: 300px;
+	background-color: aqua;
+}
+
+.tiles li:nth-child(2) {
+	width: 33%;
+	height: 200px;
+	background-color: aqua;
+}
+
+.tiles li:nth-child(3) {
+	width: 33%;
+	height: 100px;
+	background-color: aqua;
+}
+
+.intro li:nth-child(1) {
+	font-size: 2rem;
+	text-transform: uppercase;
+	text-align: center;
+	z-index: 3;
+	font-weight: 600;
+	color: aliceblue;
+	font-family: sans-serif;
+	margin-top: -8px;
+	margin-left: -32px;
+}
+
+.intro li:nth-child(1) i {
+	border: 2px solid white;
+	border-radius: 44px;
+	padding: 8px;
+}
+
+.intro li:nth-child(1) span {
+		margin: 4px;
+}
+
+.align-end {
+	list-style: none;
+	align-self: flex-end;
+}
+
+.intro li:nth-child(2),
+.intro li:nth-child(3),
+.intro li:nth-child(4) {
+	margin-top: auto;
+	font-size: 1.6rem;
+	text-transform: uppercase;
+}
+
+.button {
+	width: calc(100% - 24px);
+	background-color: orangered;
+	margin: 8px 8px 8px 0px;
+	text-align: center;
+	height: 44px;
+	color: white;
+	font-weight: 600;
+	font-size: 1.5rem;
+	line-height: 1.8;
+	border-radius: 8px;
+}
