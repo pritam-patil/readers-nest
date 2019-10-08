@@ -28,7 +28,7 @@ const getTimeDiff = start => {
 
 const PostInfo = props => (
   <div className="post-info">
-    <img className="pi-img" src={props.thumb} />
+    <img className="pi-img" src={props.thumb} alt={props.thumb} />
     <div className="view-details">
       <div className="pi-tile">
         <div className="author">
@@ -76,6 +76,8 @@ const getSupportedImageSize = image_arr => {
         data.height < 300 ? data.height + 2 * NAVBAR_HEIGHT : data.height - 2 * NAVBAR_HEIGHT;
       deviceWidth = width;
     }
+
+    return true;
   });
 
   if (deviceHeight > 420) {
@@ -91,8 +93,8 @@ const ImageItem = props => {
   const [width, height] = details;
 
   return (
-    <LazyLoad height={height}>
-      <img style={{ width: width, height: 'auto' }} className="image-view" src={source} alt={alt} />
+    <LazyLoad height={height} once placeholder={<div>Loading</div>}>
+      <img style={{ width, height }} className="image-view" src={source} alt={alt} />
     </LazyLoad>
   );
 };
@@ -104,14 +106,15 @@ const CustomLazyLoad = props => {
   return <div className={`${props.className}`} style={backgroundStyle} />;
 };
 
+// eslint-disable-next-line
 const getMetaTags = postLink => {
   return fetch(`https://api.urlmeta.org?url=${postLink}`)
     .then(response => {
       return response.json();
     })
     .then(data => {
+      // eslint-disable-next-line
       const image = !!data.meta && (data.meta.favicon || data.meta.image);
-      console.log('>> ', image);
       return !!data.meta && data.meta;
     });
 };
@@ -139,8 +142,8 @@ export class PostItem extends React.Component {
   render() {
     const {
       thumbnail,
-      thumb_width,
-      thumb_height,
+      // thumb_width,
+      // thumb_height,
       preview,
       details,
       title,
@@ -161,30 +164,35 @@ export class PostItem extends React.Component {
         {
           <div className={'thumb-title'}>
             <p className="post-title" onClick={() => clickHandler(url)}>
-              {' '}
               {unescape(title)}
             </p>
           </div>
         }
         {true && isImageUrl(url) && <ImageItem preview={preview} source={url} alt={title} />}
         {false && isImageUrl(url) && <CustomLazyLoad className="movie-backdrop" url={url} />}
-        {isVideoURL(url) && <iframe width="100%" height="440px" src={getEmbedURL(url)} />}
+        {isVideoURL(url) && (
+          <iframe title="Video content" width="100%" height="440px" src={getEmbedURL(url)} />
+        )}
 
         {details && <p className="post-desc"> {unescape(details)} </p>}
-        {false && !details && !isImageUrl(url) && (
-          <img
-            style={{
-              height: '96px',
-              width: '96px',
-              borderRadius: '50px',
-              border: '4px solid orangered',
-            }}
-            src={thumbnail}
-          />
-        )}
-        {!isImageUrl(url) && !isVideoURL(url) && (
-          <PostInfo url={url} thumb={postIcon} author={author} created={created} />
-        )}
+        {false &&
+          !details &&
+          !isImageUrl(url) && (
+            <img
+              style={{
+                height: '96px',
+                width: '96px',
+                borderRadius: '50px',
+                border: '4px solid orangered',
+              }}
+              src={thumbnail}
+              alt=""
+            />
+          )}
+        {!isImageUrl(url) &&
+          !isVideoURL(url) && (
+            <PostInfo url={url} thumb={postIcon} author={author} created={created} />
+          )}
         {false && (
           <ShareOptions
             {...{

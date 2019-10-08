@@ -6,7 +6,7 @@ import Modal from 'react-responsive-modal';
 import CircleLoader from '../components/core/circle-loader';
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
 import Picker from '../components/picker';
-import Posts, { PostItem } from '../components/posts';
+import { PostItem } from '../components/posts';
 import Navigator from '../components/core/navigator';
 import ShareOptions from '../components/posts/shareOptions';
 import 'react-toastify/dist/ReactToastify.css';

@@ -10,8 +10,8 @@
     "fastclick": "^1.0.6",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-lazyload": "^2.3.0",
     "react-lightweight-tooltip": "^1.0.0",
     "react-redux": "^5.0.6",
@@ -47,9 +47,6 @@
     "prettier": "prettier --write src/**/*.{js,jsx}"
   },
   "lint-staged": {
-    "*.{js,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,css}": ["prettier --write", "git add"]
   }
 }

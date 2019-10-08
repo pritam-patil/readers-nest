@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { func, number, string } from 'prop-types';
-
 import {
   EmailIcon,
   EmailShareButton,
@@ -15,43 +13,10 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from 'react-share';
+import CopyTextOnClick from './CopyText';
 import './styles.css';
 
 const ICON_SIZE = 44;
-
-class CopyTextOnClick extends React.Component {
-  copyText = () => {
-    this.refs.input.select();
-
-    document.execCommand('copy');
-    toast.success('Copied to clipboard.', {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-    });
-    return false;
-  };
-
-  render() {
-    const { text } = this.props;
-
-    return (
-      <div className={'copy-link'}>
-        <span> {text} </span>
-        <input
-          ref="input"
-          type="text"
-          defaultValue={text}
-          style={{ position: 'fixed', top: '-1000px' }}
-        />
-        <button onClick={this.copyText}> COPY </button>
-      </div>
-    );
-  }
-}
 
 class ShareOptions extends Component {
   constructor(props) {
@@ -66,8 +31,8 @@ class ShareOptions extends Component {
   getSharePostFooter = text => `${text}\n Shared via - http://readers-digest.surge.sh`;
 
   render() {
-    const { title, url, numComments, ups, onSharedClick } = this.props;
-    const { isChecked } = this.state;
+    const { title, url, /* numComments, ups, */ onSharedClick } = this.props;
+    // const { isChecked } = this.state;
 
     return (
       <Fragment>
