@@ -149,7 +149,6 @@ class AsyncApp extends Component {
     // eslint-disable-next-line
     const { selected, selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
     const { postAt: index, renderSplash, isOpen } = this.state;
-    console.log(`>> state of modal: ${isOpen}`);
     const sortedPosts = posts && posts.length && this.orderPosts(posts);
 
     if (!online) {
@@ -183,6 +182,7 @@ class AsyncApp extends Component {
         {!isFetching && (
           <Modal
             classNames={{ modal: 'modal-custom' }}
+            style={{ width: 'min(240px, 70vw)' }}
             open={this.state.isOpen}
             onClose={this.onCloseModal}
             showCloseIcon={true}
